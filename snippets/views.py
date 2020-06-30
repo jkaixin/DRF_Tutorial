@@ -1,6 +1,7 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.http import Http404
 from snippets.models import Snippet
 from snippets.serializers import SnippetsSerializer
 
@@ -31,7 +32,7 @@ class SnippetDetail(APIView):
         try:
             return Snippet.objects.get(id=pk)
         except Snippet.DoesNotExist:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            raise Http404
 
     def get(self, request, pk, format=None):        
         snippet = self.get_object(pk)
