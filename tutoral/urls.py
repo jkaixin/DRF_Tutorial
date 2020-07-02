@@ -25,8 +25,8 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'', include('snippets.urls')),
+    path(r'api-auth', include('rest_framework.urls'))
 ]
-
 # router = routers.DefaultRouter()
 # router.register(r'users', views.UserViewSet)
 # router.register(r'groups', views.GroupViewSet)
